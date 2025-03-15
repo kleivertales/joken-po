@@ -6,33 +6,32 @@ const machineScore = document.querySelector('#machine-score')
 let humanScoreNumber = 0
 let machineScoreNumber = 0
 
-
-const playHuman = (humanChoice) => {
-
-    playTheGame(humanChoice, playMachine())
+const playHuman = (humanchoice) => {
+    playTheGame(humanchoice, playMachine())
 }
 
 const playMachine = () => {
 
-    const choices = ['paper', 'rock', 'iscissors']
-    const randomNumber = Math.floor(Math.random() * 3)
-    return choices[randomNumber]
+    const choice = ['paper', 'rock', 'iscissors']
+    const randomNumber = Math.floor(Math.random()) * 3
+    return choice[randomNumber]
 }
+
 const playTheGame = (human, machine) => {
-    console.log('maquna:' + machine + ' humano:' + human)
+    console.log('eu: ' + human + ' maquina: ' + machine)
     if (human === machine) {
-        result.innerHTML = 'Empate'
+        result.innerHTML = "Deu empate!!"
+
     }
-    else if((human === 'paper' && machine === 'rock') ||
-        (human === 'scissors' && machine === 'paper') ||
-        (human === 'paper' && machine === 'rock')) {
-        result.innerHTML = "Você venceu!! &#128540"
+    if ((machine === 'paper' && human === 'iscissors') ||
+        (machine === 'iscissors' && human === 'rock') ||
+        (machine === 'rock' && human === 'paper')) {
+        result.innerHTML = "você Ganhou!!"
         humanScoreNumber++
         humanScore.innerHTML = humanScoreNumber
     } else {
-        result.innerHTML = "Perdeu!!&#128545"
-        machineScoreNumber++ 
+        result.innerHTML = "Você Perdeu!!"
+        machineScoreNumber++
         machineScore.innerHTML = machineScoreNumber
     }
 }
-
